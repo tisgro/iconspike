@@ -62,6 +62,14 @@
       text-transform: uppercase;
     }
 
+    button:focus {
+      outline: none;
+    }
+
+    button.is-selected {
+      background: #eee;
+    }
+
     .section {
       margin-bottom: 3rem;
     }
@@ -158,19 +166,27 @@
     </style>
     <script>
 
-    function toggleOption(button) {
-      const toggleClass = button.getAttribute('data-class');
-      document.body.classList.toggle(toggleClass);
-    }
+      function onClickToggle(evt) {
+        const button = evt.target;
+        const toggleClass = button.getAttribute('data-toggle');
+        document.body.classList.toggle(toggleClass);
+        button.classList.toggle('is-selected');
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-toggle]').forEach((toggle) => {
+          toggle.addEventListener('click', onClickToggle);
+        })
+      });
 
     </script>
   </head>
   <body>
 
     <div class="section">
-      <button type="button" onclick="toggleOption(this)" data-class="is-guides">Toggle guides</button>
-      <button type="button" onclick="toggleOption(this)" data-class="is-large">Toggle large</button>
-      <button type="button" onclick="toggleOption(this)" data-class="is-cap-center">Toggle cap center</button>
+      <button type="button" data-toggle="is-guides">Toggle guides</button>
+      <button type="button" data-toggle="is-large">Toggle large</button>
+      <button type="button" data-toggle="is-cap-center">Toggle cap center</button>
     </div>
 
     <div class="section">
