@@ -7,6 +7,7 @@
 
     :root {
       --guide-color: rgba(0, 0, 0, 0.15);
+      --icon-guide-color: rgba(204, 0, 0, 0.25);
       --icon-size: 50px;
       --text-size: 40px;
       --text-line-height: 45px;
@@ -97,15 +98,15 @@
       content: '';
       position: absolute;
       width: 1000%;
-      border-bottom: 1px solid var(--guide-color);
+      border-bottom: 1px solid var(--icon-guide-color);
     }
 
     .is-guides .icon1::after,
     .is-guides .icon2::after  {
       margin-top: -1px; /* offset border to avoid jumping */
-      border: 1px solid var(--guide-color);
+      border: 1px solid var(--icon-guide-color);
       border-width: 1px 0;
-      background: rgba(0, 0, 128, 0.25);
+      background: var(--icon-guide-color);
     }
 
     .is-large {
