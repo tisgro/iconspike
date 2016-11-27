@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Icon Spike</title>
+    <style>
+
+    :root {
+      --guide-color: rgba(0, 0, 0, 0.15);
+      --icon-size: 50px;
+      --text-size: 40px;
+      --text-line-height: 45px;
+      --text-x-height-ratio: 0.5;
+    }
+
+    @font-face {
+      font-family: 'icomoonio';
+      src: url("icomoonio.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    html {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 3rem;
+    }
+
+    h1 {
+      margin: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 200;
+      line-height: 1;
+    }
+
+    p {
+      margin: 0;
+      margin-bottom: 2rem;
+      font-weight: 100;
+    }
+
+    button {
+      border: 1px solid #999;
+      border-radius: 4px;
+      background: transparent;
+      color: #666;
+      font-size: 0.8rem;
+      font-weight: 100;
+      text-transform: uppercase;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .is-guides .text {
+      position: relative;
+      margin-top: -1px; /* offset border to avoid jumping */
+      border: 1px solid var(--guide-color);
+      border-width: 1px 0;
+    }
+
+    .is-guides .text::after {
+      --text-x-height: calc(var(--text-size) * var(--text-x-height-ratio));
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 0;
+      height: var(--text-x-height);
+      width: 100%;
+      border: 1px solid var(--guide-color);
+      border-width: 1px 0;
+    }
+
+    .is-guides .icon1::before {
+      content: '';
+      position: absolute;
+      width: 1000%;
+      border-bottom: 1px solid var(--guide-color);
+    }
+
+    .is-guides .icon1::after,
+    .is-guides .icon2::after  {
+      margin-top: -1px; /* offset border to avoid jumping */
+      border: 1px solid var(--guide-color);
+      border-width: 1px 0;
+      background: rgba(0, 0, 128, 0.25);
+    }
+
+    .is-large {
+      --text-size: 55px;
+    }
+
+    .is-large.is-guides .text::after {
+      top: 13px;
+    }
+
+    .is-cap-center .icon1 {
+        top: -0.1em;
+    }
+
+    /* ------------------------------ */
+
+    .text {
+      font-size: var(--text-size);
+      line-height: var(--text-line-height);
+    }
+
+    .icon1 {
+      display: inline-block;
+      position: relative;
+      width: var(--icon-size);
+      vertical-align: middle;
+    }
+
+    .icon1::after {
+      position: absolute;
+      top: calc(-1 * var(--icon-size) / 2);
+      left: 0;
+      font-size: var(--icon-size);
+      font-family: 'icomoonio';
+      line-height: 1;
+    }
+
+    .icon2 {
+      display: inline-block;
+      position: relative;
+    }
+
+    .icon2::after {
+      font-size: var(--icon-size);
+      font-family: 'icomoonio';
+      line-height: 0;
+    }
+
+    .icon--cross::after {
+      content: '\ea0d';
+    }
+
+    </style>
+    <script>
+
+    function toggleOption(button) {
+      const toggleClass = button.getAttribute('data-class');
+      document.body.classList.toggle(toggleClass);
+    }
+
+    </script>
+  </head>
+  <body>
+
+    <div class="section">
+      <button type="button" onclick="toggleOption(this)" data-class="is-guides">Toggle guides</button>
+      <button type="button" onclick="toggleOption(this)" data-class="is-large">Toggle large</button>
+      <button type="button" onclick="toggleOption(this)" data-class="is-cap-center">Toggle cap center</button>
+    </div>
+
+    <div class="section">
+      <h1>1. Absolute Positioning</h1>
+      <p>The icon is positioned absolutely, vertically centered on the x-height.</p>
+      <div class="text">
+        <span class="icon1 icon--cross"></span>
+        Some big text
+      </div>
+    </div>
+
+    <div class="section">
+      <h1>2. Baseline Positioning</h1>
+      <p>The icon is positioned naturally, on the baseline.</p>
+      <div class="text">
+        <span class="icon2 icon--cross"></span>
+        Some big text
+      </div>
+    </div>
+
+  </body>
+</html>
