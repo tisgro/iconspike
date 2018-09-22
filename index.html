@@ -37,6 +37,7 @@
     body {
       margin: 0;
       padding: 3rem;
+      background: white;
     }
 
     h1 {
@@ -69,6 +70,15 @@
 
     button.is-selected {
       background: #eee;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      margin-bottom: 2rem;
+      padding: 1rem 0;
+      z-index: 1;
+      background: linear-gradient(white 75%, rgba(255, 255, 255, 0));
     }
 
     .section {
@@ -109,12 +119,16 @@
       background: var(--icon-guide-color);
     }
 
-    .is-large {
+    .is-large-text {
       --text-size: 55px;
     }
 
-    .is-large.is-guides .text::after {
+    .is-large-text.is-guides .text::after {
       top: 13px;
+    }
+
+    .is-large-line-height {
+      --text-line-height: 80px;
     }
 
     .is-cap-center .icon1 {
@@ -154,6 +168,11 @@
       line-height: 0;
     }
 
+    .icon3::after {
+      font-size: var(--icon-size);
+      vertical-align: bottom;
+    }
+
     .icon--cross::after {
       font-family: 'icomoonio';
       content: '\ea0d';
@@ -184,9 +203,10 @@
   </head>
   <body>
 
-    <div class="section">
+    <div class="toolbar">
       <button type="button" data-toggle="is-guides">Toggle guides</button>
-      <button type="button" data-toggle="is-large">Toggle large</button>
+      <button type="button" data-toggle="is-large-text">Toggle large text</button>
+      <button type="button" data-toggle="is-large-line-height">Toggle large line height</button>
       <button type="button" data-toggle="is-cap-center">Toggle cap center</button>
     </div>
 
@@ -212,6 +232,19 @@
       </div>
       <div class="text">
         <span class="icon2 icon--add"></span>
+        Some big text
+      </div>
+    </div>
+
+    <div class="section">
+      <h1>3. Bottom Positioning</h1>
+      <p>The icon is positioned at the bottom of the line box.</p>
+      <div class="text">
+        <span class="icon3 icon--cross"></span>
+        Some big text
+      </div>
+      <div class="text">
+        <span class="icon3 icon--add"></span>
         Some big text
       </div>
     </div>
